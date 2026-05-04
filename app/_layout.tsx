@@ -8,11 +8,9 @@ import { Config } from '../constants/Config';
 import { SettingsProvider, useSettings } from '../context/SettingsContext';
 
 function MainLayout() {
-    console.log('[DEBUG] MainLayout Rendering');
     const router = useRouter();
     const segments = useSegments();
     const { settings, loading: settingsLoading } = useSettings();
-    console.log('[DEBUG] Settings Loading:', settingsLoading);
     const [isReady, setIsReady] = useState(false);
 
     // Auth Check

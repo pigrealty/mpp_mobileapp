@@ -34,7 +34,6 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
     : `${Config.BASE_URL}${endpoint}`;
 
   try {
-    console.log(`[API Debug] fetch starting: ${url}`);
     const response = await fetch(url, { ...options, headers });
     const data = await response.json();
 

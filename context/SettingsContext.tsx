@@ -46,7 +46,6 @@ export const SettingsProvider = ({ children }: { children: React.ReactNode }) =>
 
     useEffect(() => {
         async function loadSettings() {
-            console.log('[DEBUG] loadSettings started');
             try {
                 // Try cache first
                 const cached = await SecureStore.getItemAsync('mobile_settings');
@@ -73,7 +72,6 @@ export const SettingsProvider = ({ children }: { children: React.ReactNode }) =>
             } catch (err) {
                 console.error('Settings load failed:', err);
             } finally {
-                console.log('[DEBUG] loadSettings finished');
                 setLoading(false);
             }
         }
