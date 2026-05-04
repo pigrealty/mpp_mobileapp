@@ -5,10 +5,9 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { apiFetch } from '../../services/api';
+import { apiFetch, saveToken } from '../../services/api';
 import { Config } from '../../constants/Config';
 import { useSettings } from '../../context/SettingsContext';
-import * as SecureStore from 'expo-secure-store';
 
 export default function LoginScreen() {
     const router = useRouter();
@@ -35,7 +34,7 @@ export default function LoginScreen() {
             });
 
             if (res.success) {
-                await SecureStore.setItemAsync('user_token', res.token);
+                await saveToken(res.token);
                 router.replace('/(tabs)');
             } else {
                 setError(res.error || 'Login failed');
